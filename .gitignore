@@ -1,0 +1,6 @@
+/.assets
+# /images/*
+.env
+/node*
+
+**.sh

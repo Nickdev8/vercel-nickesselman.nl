@@ -1,0 +1,167 @@
+:root {
+    --myblue: rgb(17, 17, 29) !important;
+    --raveborder: 1px solid aquamarine !important;
+}
+
+
+.raveactive {
+    background-color: black !important;
+    border: var(--raveborder) !important;
+}
+
+.dev-border {
+    border: var(--raveborder) !important;
+}
+
+.raveactive *:not(button):not(a) {
+    color: rgb(199, 199, 199) !important;
+}
+
+button {
+    color: black !important;
+    background: aquamarine !important;
+}
+
+#duckbutton {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3),
+        inset 0 -0.8rem turquoise !important;
+}
+
+#duckbutton:active {
+    box-shadow: inset 0 1rem turquoise !important;
+}
+
+a {
+    color: aquamarine !important;
+}
+
+.raveactive .bars {
+    background-color: white !important;
+}
+
+img:not(.dicoimage):not(.logo) {
+    filter: contrast(110%) hue-rotate(20deg) opacity(70%) !important;
+}
+
+.dicoimage {
+    width: 20rem !important;
+    height: auto !important;
+}
+
+#discoball1,
+#discoball2 {
+    opacity: 1 !important;
+}
+
+.site-header {
+    background: transparent !important;
+}
+
+.inner-main {
+    background-color: black !important;
+}
+
+.main-top {
+    transform: translatey(-5rem) !important;
+    background:
+        linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+        linear-gradient(126deg, rgba(29, 70, 173, 0) 0%, rgba(29, 70, 173, 1) 11%, rgba(0, 0, 0, 1) 53%, rgba(204, 6, 204, 1) 83%, rgba(0, 0, 0, 0) 100%) !important;
+}
+
+.main-top h1,
+.main-top div,
+.main-top span {
+    background-color: unset !important;
+}
+
+main {
+    overflow-y: visible !important;
+}
+
+[data-aos="fall-down"] {
+    position: fixed;
+}
+
+[data-aos="fall-down"].aos-animate {
+    top: 8rem !important;
+    transition: top 2000ms ease, opacity 2000ms ease;
+}
+
+.dancefloor {
+    animation: danceFloor 2s infinite;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+}
+
+.site-footer {
+    z-index: -2 !important;
+}
+
+.cone {
+    width: 0;
+    height: 0;
+    z-index: 1000;
+    opacity: 0.8;
+    position: fixed;
+    top: -4rem;
+    border-left: 20vh solid transparent;
+    border-right: 20vh solid transparent;
+    border-bottom: 120vh solid palevioletred;
+    transform-origin: top center;
+    animation: swing 3s infinite ease-in-out;
+    pointer-events: none !important;
+}
+
+#cone1 {
+    left: 15%;
+}
+
+#cone2 {
+    right: 15%;
+    animation-delay: -1s !important;
+}
+
+@keyframes swing {
+    0% {
+        transform: rotate(15deg);
+    }
+
+    50% {
+        transform: rotate(-15deg);
+    }
+
+    100% {
+        transform: rotate(15deg);
+    }
+}
+
+
+@keyframes danceFloor {
+    0% {
+        background:
+            linear-gradient(to bottom, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0) 100%),
+            linear-gradient(90deg, rgba(58, 180, 168, 1) 0%, rgba(253, 29, 29, 1) 33%, rgba(130, 218, 255, 1) 68%, rgba(227, 157, 107, 1) 100%);
+    }
+
+    33% {
+        background:
+            linear-gradient(to bottom, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0) 100%),
+            linear-gradient(90deg, rgba(253, 29, 29, 1) 0%, rgba(130, 218, 255, 1) 33%, rgba(227, 157, 107, 1) 68%, rgba(58, 180, 168, 1) 100%);
+    }
+
+    66% {
+        background:
+            linear-gradient(to bottom, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0) 100%),
+            linear-gradient(90deg, rgba(130, 218, 255, 1) 0%, rgba(227, 157, 107, 1) 33%, rgba(58, 180, 168, 1) 68%, rgba(253, 29, 29, 1) 100%);
+    }
+
+    100% {
+        background:
+            linear-gradient(to bottom, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0) 100%),
+            linear-gradient(90deg, rgba(58, 180, 168, 1) 0%, rgba(253, 29, 29, 1) 33%, rgba(130, 218, 255, 1) 68%, rgba(227, 157, 107, 1) 100%);
+    }
+}

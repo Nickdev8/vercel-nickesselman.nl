@@ -1,0 +1,492 @@
+@font-face {
+    font-family: 'Braille';
+    src: url('../fonts/Braille.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* separator */
+.separator {
+    margin: 2rem auto;
+}
+
+.separator:empty::before {
+    content: "\00a0";
+    display: block;
+}
+
+.middle {
+    margin: auto;
+}
+
+.split {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: space-between
+}
+
+.split>p,
+.split>div {
+    flex: 1;
+}
+
+p {
+    max-width: 600px;
+}
+
+.img-cropped {
+    width: 28rem;
+    height: 15rem;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.img-cropped-wide {
+    width: 38rem;
+    height: 15rem;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.img-cropped-small {
+    width: 18rem;
+    height: 25rem;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.img-profile {
+    width: 26rem;
+    border-radius: var(--radii-extra);
+}
+
+/* Wide (landscape) images, 16:9 */
+.img-wide>*,
+.img-wide img,
+.img-wide {
+    display: block;
+    /* remove inline-gap */
+    width: 100%;
+    /* fill container width */
+    height: auto;
+    /* height follows width */
+    aspect-ratio: 20 / 8;
+    /* lock to 16:9 */
+    object-fit: cover;
+    /* crop overflow if needed */
+    border-radius: 2rem;
+}
+
+/* Tall (portrait) images, 9:16 */
+.img-tall>*,
+.img-tall img,
+.img-tall {
+    display: block;
+    /* remove inline-gap */
+    width: auto;
+    /* height drives size if parent has one */
+    height: 100%;
+    /* fill container height */
+    aspect-ratio: 9 / 16;
+    /* lock to 9:16 */
+    object-fit: cover;
+    /* crop overflow if needed */
+    border-radius: 2rem;
+}
+
+.sub-top {
+    background: var(--myblue);
+    color: var(--white);
+    padding-bottom: 4rem;
+    text-align: center;
+    justify-content: center;
+
+}
+
+.sub-top>p,
+.sub-top>h1,
+.sub-top>h2 {
+    color: var(--white) !important;
+    z-index: 20;
+    position: relative;
+}
+
+.sub-top,
+.sub-top * {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.sub-top>h1 {
+    margin-bottom: 2rem;
+}
+
+.sub-top>div {
+    margin-bottom: 1rem;
+}
+
+/* images */
+
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    /* Adaptive column sizing */
+    gap: 2px;
+    /* Small gap between items */
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+    grid-auto-flow: dense;
+    /* Ensures better packing of grid items */
+}
+
+.media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    /* Fallback background for videos and iframes */
+}
+
+.media img,
+.media video,
+.media iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures media fills the grid cell without white space */
+    transition: transform 0.3s ease;
+    /* Smooth transition for the zoom effect */
+}
+
+.media>img:hover {
+    transform: scale(1.05);
+    /* Increase size to pop out on hover */
+    cursor: pointer;
+}
+
+/* Landscape images take up 2 columns */
+.media.landscape {
+    grid-column: span 2;
+}
+
+.projectbutton {
+    text-align: center;
+}
+
+
+@media screen and (max-width: 800px) {
+
+    .projectbutton {
+        text-align: left;
+        margin: auto 0 !important;
+    }
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 0 32px #000a;
+}
+
+.modal-close {
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+    color: #fff;
+    font-size: 3rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+    user-select: none;
+}
+
+.media img {
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 800px) {
+    .split {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .split>div {
+        padding: 1rem;
+    }
+}
+
+
+.no-font {
+    font-family: 'BowlbyOneSC-Regular' !important;
+}
+
+
+.physics-active {
+    transition-duration: unset !important;
+    transition-timing-function: unset !important;
+    transition-delay: unset !important;
+    z-index: 999 !important;
+}
+
+.physics-inactive {
+    transition-duration: .8s !important;
+}
+
+.physics-nested {
+    z-index: 999 !important;
+}
+
+span.physics-active {
+    padding: 1rem 1rem;
+    display: inline-block;
+    will-change: transform;
+}
+
+*:has(.physics.physics-active) {
+    animation-play-state: paused;
+    animation-duration: 0s;
+    /* overflow: unset NO!*/
+}
+
+div.physics-active:has(.parentonlypaddingwhenphysicsisactive) {
+    padding: 0 2rem
+}
+
+.hidden {
+    display: none !important;
+}
+
+.objectToMoreToTheBackClasses-active {
+    z-index: -999;
+    overflow: visible !important;
+    position: relative !important;
+    background-color: transparent;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0) !important;
+}
+
+.no-hover .media>img:hover {
+    transform: none !important;
+    cursor: default !important;
+}
+
+
+#devView {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: #0f0;
+    padding: 1rem;
+    max-height: 300px;
+    overflow: auto;
+    font-size: 2rem;
+    display: none;
+    z-index: 1000;
+}
+
+
+.popup {
+    color: black;
+    min-width: 200px;
+    height: auto;
+
+    /* overlaymenu overrides */
+    opacity: 1 !important;
+    padding: 0 !important;
+
+    font-size: 14px;
+    font-weight: 400;
+
+    background: hsl(0deg 0% 75%);
+    box-shadow:
+        inset -1px -1px #292929,
+        inset 1px 1px #fff,
+        inset -2px -2px rgb(158, 158, 158),
+        inset 2px 2px #ffffff;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.popup * {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.popup img,
+.popup div:has(img) {
+    pointer-events: none;
+}
+
+.popup-header {
+    font-weight: 600;
+    color: white;
+    background-color: #09246d;
+    padding: 2px 4px;
+    margin: 2px;
+    display: flex;
+    text-transform: uppercase;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.popup-close {
+    font-family: inherit;
+    border: none;
+    color: black;
+    align-self: center;
+    border-radius: 2px;
+    outline-offset: -4px;
+    cursor: pointer;
+    background: hsl(0deg 0% 75%);
+    box-shadow:
+        inset -1px -1px #292929,
+        inset 1px 1px #fff,
+        inset -2px -2px rgb(158, 158, 158),
+        inset 2px 2px #ffffff;
+    padding: 1px 3px;
+    font-size: 2rem;
+}
+
+.popup p {
+    margin: 1rem 2rem !important;
+    max-width: 400px;
+}
+
+.popup-button-container {
+    margin: 0.7rem 0;
+    width: 100%;
+    text-align: center;
+}
+
+.popup-button {
+    color: black;
+    font-family: inherit;
+    border: none;
+    border-radius: 2px;
+    outline: 1px dotted rgb(37, 37, 37);
+    outline-offset: -4px;
+    cursor: pointer;
+    background: hsl(0deg 0% 75%);
+    box-shadow:
+        inset -1px -1px #292929,
+        inset 1px 1px #fff,
+        inset -2px -2px rgb(158, 158, 158),
+        inset 2px 2px #ffffff;
+    padding: 5px 30px;
+}
+
+.popup-close:active,
+.popup-button:active {
+    box-shadow:
+        inset -1px -1px #fff,
+        inset 1px 1px #292929,
+        inset -2px -2px #ffffff,
+        inset 2px 2px rgb(158, 158, 158);
+}
+
+.popup *:hover {
+    transform: scale(1);
+}
+
+.popup-header,
+.popup-close,
+.popup-button {
+    user-select: none;
+}
+
+.poop {
+    opacity: 1 !important;
+    background-color: black;
+}
+
+.weirdsplit {
+    overflow: unset;
+    direction: rtl;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+
+.weirdsplit>* {
+    direction: ltr;
+}
+
+@media screen and (max-width: 1100px) {
+    .mainthingprojects {
+        margin: 0 !important;
+    }
+
+    .weirdsplit>div {
+        margin-right: 0 !important;
+    }
+
+}
+
+
+*:disabled:not(div),
+*[disabled]:not(div){
+  border: 1px solid #888;
+  background-color: #999;
+  color: #333;
+  transform: scale(1) !important;
+  cursor: not-allowed;
+}
+div:disabled,
+div[disabled]{
+  border: 1px solid #999;
+  background-color: #ccc;
+  color: #666;
+
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+}
+div:disabled,
+div[disabled]::after{
+  content: "Under Construction";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(to bottom right, transparent 45%, #bbb 45%, #bbb 55%, transparent 55%),
+    linear-gradient(to top right, transparent 45%, #bbb 45%, #bbb 55%, transparent 55%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  text-align: center;
+  align-content: center;
+  font-size: 4em;
+  color: white;
+  font-weight: 700;
+  cursor: context-menu;
+}

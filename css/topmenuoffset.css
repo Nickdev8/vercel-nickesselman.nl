@@ -1,0 +1,70 @@
+.overlay-menu {
+    position: fixed;
+    z-index: 999;
+    opacity: 0;
+    padding: var(--spacing-3);
+}
+.overlay-menu.inactive {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    display: none !important;
+}
+#duckhunt-card {
+    bottom: 17rem;
+    left: 2rem;
+}
+
+#muteicon {
+    top: 18rem;
+    left: 4rem;
+}
+
+#open-specials-menu {
+    bottom: 8rem;
+    left: 2rem;
+}
+
+
+#morephysics-menu {
+    bottom: 8rem;
+    left: 30rem;
+}
+
+#specials-menu {
+    bottom: 8rem;
+    left: 12rem;
+}
+
+#bigpointyarrow{
+    bottom: 8rem;
+    left: 22rem;
+}
+
+#bigpointyarrow>img {
+    width: 20rem;
+    height: 20rem;
+}
+
+/* the actual hight is set in css/rave.css in 
+[data-aos="fall-down"].aos-animate */
+#discoball1{
+    top: -64rem;
+    left: 6rem;
+}
+#discoball2{
+    top: -64rem;
+    right: 6rem;
+}
+
+
+
+
+@media (max-width: 600px) {
+#open-specials-menu {
+    bottom: 2rem;
+}
+
+  .totopbutton {
+    bottom: 3rem !important;
+  }
+}

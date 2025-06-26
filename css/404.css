@@ -1,0 +1,13 @@
+header {
+    background: #1f2d3d;
+    color: #ffffff;
+    padding: 1rem 0 6rem;
+    text-align: center;
+}
+
+header>p,
+header>h1 {
+    color: #ffffff !important;
+    z-index: 20;
+    position: relative;
+}

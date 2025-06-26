@@ -1,0 +1,144 @@
+.projectgrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+.project {
+    padding: 0 !important;
+    width: 100%;
+    display: block;
+    will-change: transform;
+}
+
+.img-ratio {
+    position: relative;
+    /* <-- enable overlay positioning */
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    border-radius: .5rem;
+    background: #eee;
+}
+
+.img-ratio img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* the little badge in top-left */
+.overlay-text {
+    position: absolute;
+    top: 1.5rem;
+    left: 1rem;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: .25rem .5rem;
+    border-radius: .25rem;
+    pointer-events: none;
+}
+
+.project>.card-content {
+    padding: 1rem;
+    padding-top: 1.5rem;
+    z-index: 1;
+    min-height: 13rem;
+}
+
+@media screen and (max-width: 1400px) {
+    .projectgrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 1100px) {
+
+    #hintidpleaseremovethisdotcom,
+    .headline {
+        display: none;
+    }
+
+    .projectgrid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .projectgrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .projectgrid {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1rem;
+    }
+}
+.project-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.project-link:hover {
+    text-decoration: none;
+}
+
+/* 1) make sure the globe-canvas is pixelated when scaled up */
+#globe canvas {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+.targetSelected {
+    overflow: unset !important;
+    transform: scale(1.3) !important;
+    z-index: 1;
+}
+
+
+.targetSelected::after {
+    content: "";
+    position: absolute;
+    /* make it 4px larger on every side—tweak to taste */
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+
+    /* yellow base */
+    background-color: #FFEB3B;
+
+    /* moving diagonal stripes */
+    background-image: repeating-linear-gradient(
+            /* 135deg = top‐right → bottom‐left */
+            135deg,
+            /* stripe            length */
+            #FFF59D 0px 20px,
+            /* gap (sees the yellow behind) */
+            transparent 20px 40px);
+    background-size: 40px 40px;
+
+    animation: slide-stripes 4s linear infinite;
+
+    border-radius: inherit;
+
+    z-index: -1;
+}
+
+/* same sliding keyframes as before */
+@keyframes slide-stripes {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 40px 40px;
+    }
+
+}
